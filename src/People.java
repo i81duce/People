@@ -11,18 +11,15 @@ import java.util.Scanner;
 
 public class People {
     public static void main(String[] args) throws IOException {
-        HashMap<String, ArrayList<Person>> countryNameMap = new HashMap<>();
+        HashMap<String, ArrayList<Person>> countryNameMap;
 
         String fileContents = readFile("people.csv");
         String[] lines = fileContents.split("\n");
-        //String s = new String();
-
-
 
         countryNameMap = populateHashMap(lines);
-        for (String country : countryNameMap.keySet()) {
-            saveCatalog(countryNameMap.get(country));
-        }
+
+            saveCatalog(countryNameMap);
+
 
 
         System.out.println(formatHashMap(countryNameMap));
@@ -71,16 +68,16 @@ public class People {
         return s;
     }
 
-    public static void saveCatalog( ArrayList<Person> personList) throws IOException {
+    public static void saveCatalog(HashMap hashMap) throws IOException {
         JsonSerializer s = new JsonSerializer();
-        for (Person p : personList) {
-            String json = s.serialize(p);
+        //for (Person p : personList) {
+            String json = s.include("*").serialize(hashMap);
 
             File f = new File("people.json");
             FileWriter fw = new FileWriter(f);
             fw.write(json);
             fw.close();
-        }
+        //}
         System.out.println("Saved");
     }
 }
