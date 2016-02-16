@@ -59,7 +59,7 @@ public class People {
     }
 
     public static String formatHashMap (HashMap<String, ArrayList<Person>> countryNameMap) {
-        String s = new String();
+        String s= new String();
         for (String country : countryNameMap.keySet()) {
             for (Person p : countryNameMap.get(country)) {
                 s += String.format("%s %s from %s\n", p.firstName, p.lastName, p.country);

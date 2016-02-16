@@ -6,6 +6,7 @@ public class Person implements Comparable { // This class contains the fields...
     String country;
     String ipAddress;
 
+    // This is the constructor...
     public Person(String id, String firstName, String lastName, String email, String country, String ipAddress) {
         this.id = id;
         this.firstName = firstName;
@@ -15,6 +16,7 @@ public class Person implements Comparable { // This class contains the fields...
         this.ipAddress = ipAddress;
     }
 
+    // This is the toString
     @Override
     public String toString() {
         return "Person{" +
@@ -26,6 +28,7 @@ public class Person implements Comparable { // This class contains the fields...
                 ", ipAddress='" + ipAddress + '\'' +
                 '}'+"\n";
     }
+
 
     @Override
     public int compareTo(Object o) {
